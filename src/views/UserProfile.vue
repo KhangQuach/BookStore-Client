@@ -1,7 +1,7 @@
 <script setup>
+
 </script>
 
 <template>
-  <RouterView/>
+  <div>asdasd</div>
 </template>
-

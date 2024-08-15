@@ -11,30 +11,47 @@ import axios from "axios";
   const isRemember = ref(false)
  
   const handleLogin = async() => {
-    const data = {
+    const postData = {
       username: username.value,
-      password: password.value,
+      password: password.value ,
     }
-    const respone = await axios.post("login",data)
-    console.log(respone)
-    localStorage.setItem('token', respone.data.token)
+    let axiosConfig = {
+      headers: {
+          'Content-Type': 'application/json;charset=UTF-8',
+          "Access-Control-Allow-Origin": "*",
+      }
+    };
+    if(postData.username.length > 0 && postData.password.length > 0){
+      const respone = await axios.post("login",postData,{axiosConfig})
+      console.log(respone.data)
+      console.log(data.username, data.password)
+      // localStorage.setItem('token', respone.data.token)
+      if(respone.data.success === true){
+        router.push('/')
+      }
+    }
   }
 </script>
 <template>
-    <div class="container min-vh-100 d-flex justify-content-center align-items-center" >
-        <div class=" row shadow-lg  w-100" >
+  <div class="">
+    <img src="../assets/books-1835753.jpg" alt="" class="position-absolute vw-100 vh-100 z-0">
+    <div class="container min-vh-100 d-flex  justify-content-lg-end justify-content-sm-center align-items-center z-1 " >
+        <div class=" row shadow bg-light bg-opacity-75 mw-75 z-1 p-5 rounded-3" style="width: 600px" >
           <!-- column 1 -->
-          <div class="col d-flex flex-column justify-content-center align-items-center px-0 my-5">
-            <form class=" w-100 d-flex flex-column gap-3 align-items-center" @submit.prevent="handleLogin">
+          <div class="col-xl d-flex flex-column justify-content-center align-items-center px-0 my-5">
+            <form class=" w-100 d-flex flex-column gap-3 align-items-center" method="post" @submit.prevent="handleLogin">
               <div class="text-center">
                 <p class="h2">Welcome Back!</p>
                 <p>To keep connected with us please login with your personal infor</p>
               </div>
-              <div class="input-group input-group-lg  w-50">
-                <input type="text" class="form-control" placeholder="Username" v-model="username">
-              </div>
-              <div class="input-group input-group-lg   w-50">
-                <input type="password" class="form-control" placeholder="Password" v-model="password">
+              <div class=" d-flex flex-column gap-2 my-3">
+                <div class="input-group input-group-lg ">
+                  <input type="text" class="form-control " placeholder="Username" v-model="username">
+                </div>
+                <div class="input-group input-group-lg ">
+                  <input type="password" class="form-control " placeholder="Password" v-model="password">
+                </div>
+
               </div>
               <div class="w-100 d-flex align-items-center justify-content-around">
                 <div class="form-check my-3">
@@ -43,7 +60,7 @@ import axios from "axios";
                     Remember me
                   </label>
                 </div>
-                <button type="submit" class="btn btn-primary btn-lg ">Login</button>
+                <button type="submit" class="btn btn-primary btn-lg text-light ">Login</button>
               </div>
             </form>
             <div class="d-flex justify-content-around w-100">
@@ -54,9 +71,8 @@ import axios from "axios";
             <Footer/>
           </div>
           <!-- column 2 -->
-          <div class="col w-100 bg-dark bg-image px-0 ">
-              <img  class="d-block w-100 h-100 " src="../assets/book1.jpg" alt="">
-          </div>
+          
         </div>
     </div>
+  </div>
 </template>
