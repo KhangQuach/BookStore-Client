@@ -44,10 +44,10 @@
                   <input type="text" class="form-control" placeholder="Username" v-model="username">
                 </div>
                 <div class="input-group input-group-lg">
-                  <input type="password" class="form-control" placeholder="Username" v-model="password">
+                  <input type="password" class="form-control" placeholder="Password" v-model="password">
                 </div>
                 <div class="input-group input-group-lg ">
-                  <input type="password" class="form-control" placeholder="Password" v-model="repeatPassword">
+                  <input type="password" class="form-control" placeholder="Password Repeat" v-model="repeatPassword">
                 </div>
               </div>
               <div class="w-100 d-flex align-items-center justify-content-around">

@@ -27,7 +27,7 @@ import axios from "axios";
       console.log(data.username, data.password)
       // localStorage.setItem('token', respone.data.token)
       if(respone.data.success === true){
-        router.push('/')
+        router.push('/home')
       }
     }
   }

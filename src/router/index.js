@@ -4,10 +4,10 @@ import Login from "../views/Login.vue"
 import SignUp from '../views/SignUp.vue'
 import UserProfile from "../views/UserProfile.vue"
 const routes = [
-  {path:"/", component: Home},
+  {path:"/home", component: Home},
   {path:"/login", component: Login},
   {path:"/signup", component: SignUp},
-  {path:"/user/profile", component: UserProfile}
+  {path:"/home/user/profile", component: UserProfile}
 ]
 const router = createRouter({
   history: createWebHistory(),
