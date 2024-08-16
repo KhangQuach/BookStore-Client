@@ -5,30 +5,31 @@
   import { RouterLink } from "vue-router";
   import OauthButtonGroup from "@components/OauthButtonGroup.vue";
   import Footer from "@components/Footer.vue";
-import axios from "axios";
+  import axios from "axios";
   const username = ref("")
   const password = ref("")
   const isRemember = ref(false)
- 
-  const handleLogin = async() => {
-    const postData = {
+  const handleLogin = async () => {
+    console.log("loging...")
+    const data = {
       username: username.value,
-      password: password.value ,
+      password: password.value
     }
-    let axiosConfig = {
-      headers: {
-          'Content-Type': 'application/json;charset=UTF-8',
-          "Access-Control-Allow-Origin": "*",
-      }
-    };
-    if(postData.username.length > 0 && postData.password.length > 0){
-      const respone = await axios.post("login",postData,{axiosConfig})
-      console.log(respone.data)
-      console.log(data.username, data.password)
-      // localStorage.setItem('token', respone.data.token)
-      if(respone.data.success === true){
+    const response = await axios.post("login" ,data)
+    console.log(response)
+    localStorage.setItem('token', response.data.token)
+    if(response.data.success === true){
+      toast.success('Logged in successfully',{
+        "position": "bottom-right"
+      });
+      setTimeout(() =>{
         router.push('/home')
-      }
+      },5000)
+    }
+    else{
+      toast.error('Invalid username or password',{
+        "position": "bottom-right"
+      });
     }
   }
 </script>
