@@ -1,9 +1,11 @@
 <script setup>
- import NavBar from '@components/NavBar.vue';
+import NavBar from '@components/NavBar.vue';
 import axios from 'axios';
 import router from 'src/router';
 import { onMounted, ref } from 'vue';
-  const username = ref("")
+import { toast } from 'vue3-toastify';
+
+  const username = ref(localStorage.getItem('username'))
   const password = ref("")
   const fullname = ref("")
   const email = ref("")
@@ -14,23 +16,40 @@ import { onMounted, ref } from 'vue';
   const address1 = ref("")
   const address2 = ref("")
   const address3 = ref("")
+
+  const handleUpdateUser = async () => {
+    const response = await axios.put(`user/updateuser/${username.value}`, {
+      password: password.value,
+      fullname: fullname.value,
+      email: email.value,
+      phone: phone.value,
+      birthday: birthday.value,
+      age: age.value,
+      gender: gender.value,
+      address1: address1.value,
+      address2: address2.value,
+      address3: address3.value,
+    })
+    console.log(response)
+    toast.success('Updated in successfully',{
+        "position": "bottom-right"
+    });
+  }
   onMounted( async () => {
-  console.log("onMounted")
-  const response = await axios.get('user/getuser/tohyyy')
-  console.log(response)
-  
-  username.value = response.data.username
-  password.value = response.data.password
-  fullname.value = response.data.fullname
-  email.value = response.data.email
-  phone.value = response.data.phone || ""
-  age.value = response.data.age || ""
-  gender.value = response.data.gender || ""
-  birthday.value = response.data.birthday.slice(0,10) || ""
-  address1.value = response.data.address1 || ""
-  address2.value = response.data.address2 || ""
-  address3.value = response.data.address3 || ""
-  
+    const response = await axios.get(`user/getuser/${username.value}`)
+    console.log(response)
+    
+    username.value = response.data.username
+    password.value = response.data.password
+    fullname.value = response.data.fullname
+    email.value = response.data.email
+    phone.value = response.data.phone 
+    age.value = response.data.age
+    gender.value = response.data.gender
+    birthday.value = response.data.birthday.slice(0,10)
+    address1.value = response.data.address1
+    address2.value = response.data.address2 
+    address3.value = response.data.address3 
 })
 </script>
 
@@ -41,8 +60,8 @@ import { onMounted, ref } from 'vue';
       <div class="col-3 border-end">
         <div class="text-center " style="margin-top: 70px;"> 
           <img src="../assets/book2.jpg" class="rounded-circle mx-auto d-block " alt="" style="width: 170px;height: 170px;">
-          <p class="h4 mt-2">Khang Quach</p>
-          <p>quachthieukhang@gmail.com</p>
+          <p class="h4 mt-2" >{{username}}</p>
+          <p>{{email}}</p>
         </div>
       </div>
       <div class="col-5">
@@ -51,11 +70,11 @@ import { onMounted, ref } from 'vue';
           <div class="row">
             <div class="col mx-0 px-0  mr-3">
               <label for="username" class="form-label">User ID:</label>
-              <input type="text" class="form-control" id="username" v-model="username">
+              <input type="text" class="form-control" id="username" disabled v-model="username">
             </div>
             <div class="col mx-0 px-0">
               <label for="password" class="form-label">Password:</label>
-              <input type="password" class="form-control" id="password" v-model="password">
+              <input type="text" class="form-control" id="password" v-model="password">
             </div>
           </div>
           <div class="row">
@@ -81,7 +100,7 @@ import { onMounted, ref } from 'vue';
             </div>
             <div class="col mx-0 px-0 ">
               <label for="username" class="form-label">Gender:</label>
-              <select class="form-control">
+              <select class="form-control" v-model="gender">
                 <option value="male">Male</option>
                 <option value="female">Female</option>
               </select>
@@ -99,11 +118,10 @@ import { onMounted, ref } from 'vue';
             <label for="address3" class="form-label">Address 3:</label>
             <input type="text" class="form-control" id="address3" v-model="address3">
           </div>
-          
-          <div class="d-flex justify-content-center mt-5 mr-5">
-            <button class="btn btn-primary px-5">Save Profile</button>
-          </div>
         </form>
+        <div class="d-flex justify-content-center mt-5 mr-5">
+          <button  class="btn btn-primary px-5" @click="handleUpdateUser">Save Profile</button>
+        </div>
       </div>
       <div class="col-4 border-start">
         <h2 class="mt-5 ml-5">Description</h2>

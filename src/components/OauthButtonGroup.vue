@@ -1,7 +1,9 @@
     
 <script setup>
-  const OAuthFacebook = () => {
+import { toast } from 'vue3-toastify';
 
+  const OAuthFacebook = () => {
+    
   }
   const OAuthGoogle = () => {
 

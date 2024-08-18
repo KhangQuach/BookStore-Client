@@ -5,6 +5,7 @@
   import OauthButtonGroup from "@components/OauthButtonGroup.vue"
   import axios from "axios"
   import router from "../router"
+import { toast } from "vue3-toastify"
   const username = ref("")
   const password = ref("")
   const repeatPassword = ref("")
@@ -19,9 +20,38 @@
       repeatPassword: repeatPassword.value,
       remember: isRemember.value,
     }
+    if(password.value !== repeatPassword.value){
+      toast.error('Passwords do not match',{
+        "position": "bottom-right"
+      });
+      return;
+    }
+    if(!email.value){
+      toast.error('Email is required',{
+        "position": "bottom-right"
+      });
+      return;
+    }
+    if(!username.value){
+      toast.error('Username is required',{
+        "position": "bottom-right"
+      });
+      return;
+    }
+    if(!password.value){
+      toast.error('Password is required',{
+        "position": "bottom-right"
+      });
+      return;
+    }
     const response =  await axios.post("signup", data)
     console.log(response)
-    router.push('/')
+    toast.success('Created in successfully',{
+        "position": "bottom-right"
+      });
+    setTimeout(() =>{
+      router.push('/')
+    },5000)
   }
 </script>
 <template>

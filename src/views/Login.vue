@@ -22,6 +22,7 @@
       toast.success('Logged in successfully',{
         "position": "bottom-right"
       });
+      localStorage.setItem('username', username.value)
       setTimeout(() =>{
         router.push('/home')
       },5000)
