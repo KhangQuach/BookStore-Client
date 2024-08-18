@@ -56,10 +56,10 @@ import { toast } from 'vue3-toastify';
 <template>
   <NavBar/>
   <div class="container-sm ">
-    <div class="row shadow-sm vh-100 ">
+    <div class="row shadow pb-5 mt-5" style="height: fit-content;">
       <div class="col-3 border-end">
         <div class="text-center " style="margin-top: 70px;"> 
-          <img src="../assets/book2.jpg" class="rounded-circle mx-auto d-block " alt="" style="width: 170px;height: 170px;">
+          <img src="../assets/book2.jpg" class="rounded-circle mx-auto d-block" alt="" style="width: 170px;height: 170px;">
           <p class="h4 mt-2" >{{username}}</p>
           <p>{{email}}</p>
         </div>
