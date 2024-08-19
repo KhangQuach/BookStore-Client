@@ -57,14 +57,14 @@ import { toast } from 'vue3-toastify';
   <NavBar/>
   <div class="container-sm ">
     <div class="row shadow pb-5 mt-5" style="height: fit-content;">
-      <div class="col-3 border-end">
+      <div class="col-lg-3  border-end">
         <div class="text-center " style="margin-top: 70px;"> 
           <img src="../assets/book2.jpg" class="rounded-circle mx-auto d-block" alt="" style="width: 170px;height: 170px;">
           <p class="h4 mt-2" >{{username}}</p>
           <p>{{email}}</p>
         </div>
       </div>
-      <div class="col-5">
+      <div class="col-lg-5 ">
         <h2 class="my-5 mx-5">Profile Settings</h2>
         <form method="put" class="row p-3 d-flex justify-content-center gap-2">
           <div class="row">
@@ -72,7 +72,7 @@ import { toast } from 'vue3-toastify';
               <label for="username" class="form-label">User ID:</label>
               <input type="text" class="form-control" id="username" disabled v-model="username">
             </div>
-            <div class="col mx-0 px-0">
+            <div class="col  mx-0 px-0">
               <label for="password" class="form-label">Password:</label>
               <input type="text" class="form-control" id="password" v-model="password">
             </div>
@@ -123,7 +123,7 @@ import { toast } from 'vue3-toastify';
           <button  class="btn btn-primary px-5" @click="handleUpdateUser">Save Profile</button>
         </div>
       </div>
-      <div class="col-4 border-start">
+      <div class=" col-lg-4 border-start">
         <h2 class="mt-5 ml-5">Description</h2>
         <p class=" p-3">
           Lorem ipsum dolor sit amet consectetur ad
