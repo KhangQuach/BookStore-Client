@@ -6,7 +6,6 @@
   <div class="card-body">
     <h5 class="card-title">Book_name</h5>
     <button href="#" class="btn btn-primary">Add to cart</button>
-    
   </div>
 </div>
 </template>

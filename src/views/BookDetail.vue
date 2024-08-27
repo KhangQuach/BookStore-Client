@@ -5,7 +5,14 @@
 <template>
   <NavBar/>
   <div class="container-sm ">
-    <div class="row shadow p-3 mt-5 rounded-2" style="height: fit-content;">
+    <nav class="my-3" aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="#">Home</a></li>
+        <li class="breadcrumb-item"><a href="#">Library</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Data</li>
+      </ol>
+    </nav>
+    <div class="row shadow p-3 rounded-2" style="height: fit-content;">
       <div class="col-5">
         <img class="img-fluid" src="../assets/book2.jpg" alt="">
       </div>
@@ -16,10 +23,16 @@
             <h2>99$</h2>
             <h3>4.5/5 Star</h3>
           </div>
+          <h5>Author: KhangQuach</h5>
           <div class="my-5">
             <div class="input-group mb-3">
-              <input type="date" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2">
-              <span class="input-group-text" id="basic-addon2">Return Date</span>
+              <select class="form-select" id="inputGroupSelect02">
+                <option selected>Choose your type</option>
+                <option value="hardcover">Hard Cover</option>
+                <option value="ebook">Ebook</option>
+                <option value="audiobook">Audio Book</option>
+              </select>
+              <label class="input-group-text" for="inputGroupSelect02">Type</label>
             </div>
             <div class="input-group mb-3">
               <select class="form-select" id="inputGroupSelect02">
@@ -47,13 +60,13 @@
             </div>
             <div class="card w-25">
               <div class="card-body">
-                <h6 class="card-subtitle text-body-secondary">Pages</h6>
+                <h6 class="card-subtitle text-body-secondary">Language</h6>
                 <p class="card-text">English</p>
               </div>
             </div>
             <div class="card w-25">
               <div class="card-body">
-                <h6 class="card-subtitle text-body-secondary">Card subtitle</h6>
+                <h6 class="card-subtitle text-body-secondary">Pages</h6>
                 <p class="card-text">704</p>
               </div>
             </div>

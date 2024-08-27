@@ -18,7 +18,7 @@ import { toast } from 'vue3-toastify';
   const address3 = ref("")
 
   const handleUpdateUser = async () => {
-    const response = await axios.put(`user/updateuser/${username.value}`, {
+    const response = await axios.patch(`user/${username.value}`, {
       password: password.value,
       fullname: fullname.value,
       email: email.value,
@@ -36,7 +36,7 @@ import { toast } from 'vue3-toastify';
     });
   }
   onMounted( async () => {
-    const response = await axios.get(`user/getuser/${username.value}`)
+    const response = await axios.get(`user/${username.value}`)
     console.log(response)
     
     username.value = response.data.username
