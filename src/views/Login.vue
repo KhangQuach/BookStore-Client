@@ -38,7 +38,7 @@
   <div class="">
     <img src="../assets/books-1835753.jpg" alt="" class="position-absolute vw-100 vh-100 z-0">
     <div class="container min-vh-100 d-flex  justify-content-lg-end justify-content-sm-center align-items-center z-1 " >
-        <div class=" row shadow bg-light bg-opacity-75 mw-75 z-1 p-5 rounded-3" style="width: 600px" >
+        <div class=" row shadow  bg-light bg-opacity-75 mw-75 z-1 p-5 rounded-3" style="width: 600px" >
           <!-- column 1 -->
           <div class="col-xl d-flex flex-column justify-content-center align-items-center px-0 my-5">
             <form class=" w-100 d-flex flex-column gap-3 align-items-center" method="post" @submit.prevent="handleLogin">
@@ -53,7 +53,6 @@
                 <div class="input-group input-group-lg ">
                   <input type="password" class="form-control " placeholder="Password" v-model="password">
                 </div>
-
               </div>
               <div class="w-100 d-flex align-items-center justify-content-around">
                 <div class="form-check my-3">

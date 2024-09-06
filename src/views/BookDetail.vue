@@ -1,5 +1,19 @@
-<script>
-
+<script setup>
+  import axios from 'axios';
+import { onMounted, ref } from 'vue';
+import { useRoute } from 'vue-router';
+  const route = useRoute()
+  const data = ref({})
+  onMounted( async ()=>{
+    const _id = route.params.id
+    try{
+      const result = await axios.get(`/book/${_id}`)
+      console.log(result.data)
+    }
+    catch(e){
+      console.error(e)
+    }
+  })
 </script>
 
 <template>
@@ -13,7 +27,7 @@
       </ol>
     </nav>
     <div class="row shadow p-3 rounded-2" style="height: fit-content;">
-      <div class="col-5">
+      <div class="col-5 ">
         <img class="img-fluid" src="../assets/book2.jpg" alt="">
       </div>
       <div class="col rounded-2">
@@ -23,7 +37,7 @@
             <h2>99$</h2>
             <h3>4.5/5 Star</h3>
           </div>
-          <h5>Author: KhangQuach</h5>
+          <h5>Author: {{}}</h5>
           <div class="my-5">
             <div class="input-group mb-3">
               <select class="form-select" id="inputGroupSelect02">

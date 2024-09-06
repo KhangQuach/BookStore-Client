@@ -2,18 +2,13 @@
 import { onMounted, reactive, ref } from 'vue';
 import axios from 'axios';
 import NavBar from '../components/NavBar.vue'
-import BookCard from '@components/BookCard.vue';
 import router from 'src/router';
-const user = ref({})
+import Row from '@components/Row.vue';
 const searchInput = ref("")
+
 const handleSearch = () => {
   router.push(`/home/search/{${searchInput.value}}`)
   console.log(searchInput.value)
-}
-const created = async () => {
-  const respone = await axios.get('getuser')
-  console.log(respone)
-  user.value = respone.data
 }
 //Create endpoint
 const categoryEnpoints = ['romance','horror','children','mystery','travel','cookbook','thriller','other']
@@ -22,33 +17,30 @@ categoryEnpoints.forEach(category => {
   endpoints.push(`http://localhost:3000/book/categories/${category}`)
 })
 
-const data = ref([])
-const categories = reactive(
-  {
-    Romance:[],
-    horror: [],
-    children: [],
-    mystery: [],
-    travel: [],
-    cookbook: [],
-    thriller: [],
-    other: []
-  }
-)
-onMounted(async () => {
-  console.log(endpoints)
-  try {
-    const responses = await axios.all(endpoints.map((endpoint) => axios.get(endpoint)));
-    responses.forEach((response, index) => {
-      // data.value.push(response.data)
-      console.log(response.data)
-      
-    });
-    console.log(reactive)
-  } catch (error) {
-    console.error(error);
-  }
-})
+const categories = reactive({values:[]})
+// onMounted(async () => {
+//   try {
+//     console.log(categories)
+//     const responses = await axios.all(endpoints.map((endpoint) => axios.get(endpoint)));
+//     responses.forEach((response, index) => {
+//       categories.values.push(response.data)
+//     });
+//   } catch (error) {
+//     console.error(error);
+//   }
+// })
+// const categories = reactive(
+//   {
+//     Romance:[],
+//     Horror: [],
+//     Children: [],
+//     Mystery: [],
+//     Travel: [],
+//     Cookbook: [],
+//     Thriller: [],
+//     Other: []
+//   }
+// )
 </script>
 <template>
   <div>
@@ -67,18 +59,7 @@ onMounted(async () => {
           </form>
         </div>
       </div>
-      <div class="d-flex flex-column gap-3 my-4 shadow px-5 py-5">
-        <div class ="text-center">
-          <h3>Title Book</h3>
-          <div class="d-flex gap-3 overflow-auto w-100 shadow-sm pb-1 w-100" style="max-height:420 ;">
-            <BookCard/>
-            <BookCard/>
-            <BookCard/>
-            <BookCard/>
-            <BookCard/>
-          </div>
-        </div>
-      </div>
+      <Row v-for="(categories,index) in categoryEnpoints" :key="index" :category="categories"/>
     </div>
   </div>
   
