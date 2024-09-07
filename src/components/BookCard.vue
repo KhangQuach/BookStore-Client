@@ -4,7 +4,7 @@ import { defineProps, onMounted, ref} from "vue";
 import { toast } from 'vue3-toastify';
   const id = "id"
   const props = defineProps(['book']);
-  console.log(props.book)
+  // console.log(props.book)
   const addToCard = () => {
       console.log("added to card")
       toast.success('Added to card',{

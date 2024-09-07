@@ -14,7 +14,7 @@ import router from 'src/router';
 </script>
 
 <template>
-  <nav class="navbar navbar-expand-lg bg-body-tertiary shadow-sm ">
+  <nav class="navbar navbar-expand-lg bg-body-tertiary shadow-sm fixed-top">
     <div class="container-fluid">
       <a class="navbar-brand" href="/home">Logo Here</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

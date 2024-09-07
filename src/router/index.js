@@ -12,7 +12,7 @@ const routes = [
   {path:"/signup", component: SignUp},
   {path:"/home/user/profile", component: UserProfile},
   {path:"/home/detail/:id", component: BookDetail},
-  {path:"/home/search/:query",component: Search}
+  {path:"/home/search",component: Search}
 ]
 const router = createRouter({
   history: createWebHistory(),

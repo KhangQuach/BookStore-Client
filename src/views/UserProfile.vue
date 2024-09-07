@@ -55,7 +55,7 @@ import { toast } from 'vue3-toastify';
 
 <template>
   <NavBar/>
-  <div class="container-sm ">
+  <div class="container-sm " style="margin-top: 70px;">
     <div class="row shadow pb-5 mt-5" style="height: fit-content;">
       <div class="col-lg-3  border-end">
         <div class="text-center " style="margin-top: 70px;"> 

@@ -1,5 +1,5 @@
 <script setup>
-  import axios from 'axios';
+import axios from 'axios';
 import { onMounted, ref } from 'vue';
 import { useRoute } from 'vue-router';
   const route = useRoute()
@@ -8,7 +8,8 @@ import { useRoute } from 'vue-router';
     const _id = route.params.id
     try{
       const result = await axios.get(`/book/${_id}`)
-      console.log(result.data)
+      data.value = result.data.data
+      console.log(data.value)
     }
     catch(e){
       console.error(e)
@@ -18,7 +19,7 @@ import { useRoute } from 'vue-router';
 
 <template>
   <NavBar/>
-  <div class="container-sm ">
+  <div class="container-sm" style="margin-top: 70px;">
     <nav class="my-3" aria-label="breadcrumb">
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="#">Home</a></li>
@@ -32,28 +33,22 @@ import { useRoute } from 'vue-router';
       </div>
       <div class="col rounded-2">
         <form class="m-5 d-flex flex-column gap-2">
-          <h1>Product name</h1>
+          <h1>{{ data?.bookName }}</h1>
           <div class="d-flex align-items-center gap-5">
-            <h2>99$</h2>
-            <h3>4.5/5 Star</h3>
+            <h2>{{data?.price}}$</h2>
+            <h3>{{data?.rate}}</h3>
           </div>
-          <h5>Author: {{}}</h5>
+          <h5>Author: {{data?.author}}</h5>
           <div class="my-5">
             <div class="input-group mb-3">
               <select class="form-select" id="inputGroupSelect02">
-                <option selected>Choose your type</option>
-                <option value="hardcover">Hard Cover</option>
-                <option value="ebook">Ebook</option>
-                <option value="audiobook">Audio Book</option>
+                <option v-for="(type, index) in data?.typeBook" :key="index" value="1">{{ type }}</option>
               </select>
               <label class="input-group-text" for="inputGroupSelect02">Type</label>
             </div>
             <div class="input-group mb-3">
               <select class="form-select" id="inputGroupSelect02">
-                <option selected>Choose...</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
+                <option v-for="(part, index) in data?.part" :key="index" value="1">{{ part }}</option>
               </select>
               <label class="input-group-text" for="inputGroupSelect02">Part</label>
             </div>
@@ -63,40 +58,31 @@ import { useRoute } from 'vue-router';
             <div class="card w-25">
               <div class="card-body">
                 <h6 class="card-subtitle text-body-secondary">Publish Date</h6>
-                <p class="card-text">May 28, 2002</p>
+                <p class="card-text ">{{data?.publishDate}}</p>
               </div>
             </div>
             <div class="card w-25">
               <div class="card-body">
                 <h6 class="card-subtitle text-body-secondary">Publisher</h6>
-                <p class="card-text">Bantam Books</p>
+                <p class="card-text">{{data?.publisher}}</p>
               </div>
             </div>
             <div class="card w-25">
               <div class="card-body">
                 <h6 class="card-subtitle text-body-secondary">Language</h6>
-                <p class="card-text">English</p>
+                <p class="card-text">{{ data?.language }}</p>
               </div>
             </div>
             <div class="card w-25">
               <div class="card-body">
                 <h6 class="card-subtitle text-body-secondary">Pages</h6>
-                <p class="card-text">704</p>
+                <p class="card-text">{{data?.pageNumber}}</p>
               </div>
             </div>
           </div>
           <div class="mt-5">
             <h5>Detailed Description</h5>
-            <p class="">Lorem, ipsum dolor sit amet consectetur adipisicing eli
-              t. Eos dolore rerum itaque facere quod alias ullam eaque beatae 
-              ipsam debitis! Soluta magnam nisi iusto nemo illum dolore eaque natus eum?
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi iusto optio
-               dolores accusantium illo, omnis pariatur eligendi dolorum non dolore, eos
-                tenetur, amet ab iste ducimus aperiam ullam quaerat repellendus.
-                tenetur, amet ab iste ducimus aperiam ullam quaerat repellendus.
-                tenetur, amet ab iste ducimus aperiam ullam quaerat repellendus.
-                
-            </p>
+            <p class="">{{data.description }}</p>
           </div>
         </form>
       </div>
