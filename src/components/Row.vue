@@ -5,7 +5,6 @@ import { defineProps, onMounted, ref} from "vue";
 
 const props = defineProps(['category']);
 
-console.log(props.category);
 const books = ref({})
 onMounted(async () => {
   try{

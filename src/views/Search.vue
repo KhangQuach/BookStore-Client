@@ -8,13 +8,34 @@ import router from 'src/router';
 
 const route = useRoute()
 const searchInput = ref("")
-const handleSearch = () => {
-  router.push({path:`/home/search`,query:{ nameBook: `${searchInput.value}`}})
-}
-onMounted(()=> {
+const response = ref("")
+const handleSearch = async () => {
   const nameBook = route.query.nameBook
-  console.log(nameBook)
-  searchInput.value = nameBook
+  if(searchInput.value){
+    console.log(searchInput.value)
+    try {
+      response.value = await axios.get(`/search?bookName=${searchInput.value}`)
+      console.log(response.value)
+    }
+    catch (error) {
+      console.error(error);
+    }
+  }
+}
+
+onMounted( async () => {
+  const nameBook = route.query.nameBook
+  if(nameBook){
+    console.log(nameBook)
+    searchInput.value = nameBook
+    try {
+      response.value = await axios.get(`/search?bookName=${nameBook}`)
+      console.log(response.value)
+    }
+    catch (error) {
+      console.error(error);
+    }
+  }
 })
 
 </script>
@@ -27,25 +48,21 @@ onMounted(()=> {
         <!-- <img class="d-block cover w-100 h-100" src="../assets/book2.jpg" alt=""> -->
         <div class="text-center px-5" style="width: 750px;"> 
           <h1>Search your book here!</h1>
-          <form class="input-group mb-3" @submit="handleSearch">
+          <form class="input-group mb-3" @submit.prevent="handleSearch">
             <input type="text" class="form-control fs-4 " aria-label="Recipient's username" aria-describedby="button-search" v-model="searchInput">
             <button class="btn btn-outline-secondary" type="submit" id="button-search">Search</button>
           </form>
         </div>
       </div>
       
-      <div class="row mt-4">
-        <h2 class="mx-5">Search results :</h2>
-        <div class="col">
-          <BookCardH/>
-          <BookCardH/>
-          <BookCardH/>
-        </div>
-        <div class="col">
-          <BookCardH/>
-          <BookCardH/>
-          <BookCardH/>
-        </div>  
+      <h2 class="mx-5">Search results :</h2>
+      <div class="d-flex flex-row flex-wrap gap-3 justify-content-center mt-4">
+        <BookCardH/>
+        <BookCardH/>
+        <BookCardH/>
+        <BookCardH/>
+        <BookCardH/>
+        <BookCardH/> 
       </div>
     </div>
   </div>

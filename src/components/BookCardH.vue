@@ -2,7 +2,7 @@
 </script>
 
 <template>
-  <div class="card mb-3" style="max-width: 100%;">
+  <div class="card" style="max-width: 48%;">
     <div class="row g-0">
       <div class="col-md-3">
         <img src="..." class="img-fluid rounded-start" alt="...">

@@ -33,7 +33,7 @@ import { useRoute } from 'vue-router';
       </div>
       <div class="col rounded-2">
         <form class="m-5 d-flex flex-column gap-2">
-          <h1>{{ data?.bookName }}</h1>
+          <h1>{{ data?.name }}</h1>
           <div class="d-flex align-items-center gap-5">
             <h2>{{data?.price}}$</h2>
             <h3>{{data?.rate}}</h3>

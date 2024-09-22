@@ -18,31 +18,6 @@ categoryEndpoints.forEach(category => {
   endpoints.push(`http://localhost:3000/book/categories/${category}`)
 })
 
-
-// const categories = reactive({values:[]})
-// onMounted(async () => {
-//   try {
-//     console.log(categories)
-//     const responses = await axios.all(endpoints.map((endpoint) => axios.get(endpoint)))
-//     responses.forEach((response, index) => {
-//       categories.values.push(response.data)
-//     })
-//   } catch (error) {
-//     console.error(error)
-//   }
-// })
-// const categories = reactive(
-//   {
-//     Romance:[],
-//     Horror: [],
-//     Children: [],
-//     Mystery: [],
-//     Travel: [],
-//     Cookbook: [],
-//     Thriller: [],
-//     Other: []
-//   }
-// )
 </script>
 <template>
   <NavBar/>
