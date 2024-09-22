@@ -5,6 +5,7 @@ import NavBar from '../components/NavBar.vue'
 import BookCardH from '@components/BookCardH.vue';
 import { useRoute } from 'vue-router';
 import router from 'src/router';
+
 const route = useRoute()
 const searchInput = ref("")
 const handleSearch = () => {
