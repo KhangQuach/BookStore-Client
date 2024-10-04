@@ -1,11 +1,11 @@
 <script setup>
 import NavBar from '@components/NavBar.vue';
 import axios from 'axios';
-import router from 'src/router';
 import { onMounted, ref } from 'vue';
 import { toast } from 'vue3-toastify';
-
-  const username = ref(localStorage.getItem('username'))
+  
+  const id = ref(localStorage.getItem('id'))
+  const username = ref("")
   const password = ref("")
   const fullname = ref("")
   const email = ref("")
@@ -18,7 +18,8 @@ import { toast } from 'vue3-toastify';
   const address3 = ref("")
 
   const handleUpdateUser = async () => {
-    const response = await axios.patch(`user/${username.value}`, {
+    const response = await axios.patch(`user/${id.value}`, {
+      username: username.value,
       password: password.value,
       fullname: fullname.value,
       email: email.value,
@@ -36,7 +37,7 @@ import { toast } from 'vue3-toastify';
     });
   }
   onMounted( async () => {
-    const response = await axios.get(`user/${username.value}`)
+    const response = await axios.get(`user/${id.value}`)
     console.log(response)
     
     username.value = response.data.username
@@ -46,7 +47,7 @@ import { toast } from 'vue3-toastify';
     phone.value = response.data.phone 
     age.value = response.data.age
     gender.value = response.data.gender
-    birthday.value = response.data.birthday.slice(0,10)
+    birthday.value = response.data.birthday.slice(0,10) 
     address1.value = response.data.address1
     address2.value = response.data.address2 
     address3.value = response.data.address3 
@@ -55,7 +56,7 @@ import { toast } from 'vue3-toastify';
 
 <template>
   <NavBar/>
-  <div class="container-sm " style="margin-top: 70px;">
+  <div class="container-sm " style="margin-top: 90px;">
     <div class="row shadow pb-5 mt-5" style="height: fit-content;">
       <div class="col-lg-3  border-end">
         <div class="text-center " style="margin-top: 70px;"> 

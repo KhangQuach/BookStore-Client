@@ -1,21 +1,20 @@
 <script setup>
-import { onMounted, ref } from 'vue';
+import { onMounted, reactive, ref } from 'vue';
 import axios from 'axios';
 import NavBar from '../components/NavBar.vue'
-import BookCardH from '@components/BookCardH.vue';
+import HorizontalBookCard from '@components/HorizontalBookCard.vue';
 import { useRoute } from 'vue-router';
-import router from 'src/router';
 
 const route = useRoute()
 const searchInput = ref("")
-const response = ref("")
+const books = ref({})
 const handleSearch = async () => {
-  const nameBook = route.query.nameBook
   if(searchInput.value){
     console.log(searchInput.value)
     try {
-      response.value = await axios.get(`/search?bookName=${searchInput.value}`)
-      console.log(response.value)
+      const { data } = await axios.get(`/search?bookName=${searchInput.value}`)
+      books.value = data
+      console.log(books.value)
     }
     catch (error) {
       console.error(error);
@@ -23,14 +22,15 @@ const handleSearch = async () => {
   }
 }
 
-onMounted( async () => {
+onMounted(async () => {
   const nameBook = route.query.nameBook
   if(nameBook){
     console.log(nameBook)
     searchInput.value = nameBook
     try {
-      response.value = await axios.get(`/search?bookName=${nameBook}`)
-      console.log(response.value)
+      const { data } = await axios.get(`/search?bookName=${nameBook}`)
+      books.value = data
+      console.log(books.value)
     }
     catch (error) {
       console.error(error);
@@ -55,14 +55,11 @@ onMounted( async () => {
         </div>
       </div>
       
-      <h2 class="mx-5">Search results :</h2>
-      <div class="d-flex flex-row flex-wrap gap-3 justify-content-center mt-4">
-        <BookCardH/>
-        <BookCardH/>
-        <BookCardH/>
-        <BookCardH/>
-        <BookCardH/>
-        <BookCardH/> 
+      <div class=" shadow p-3 ">
+        <h2 class="">Search results :</h2>
+        <div class="d-flex flex-row flex-wrap gap-3 justify-content-center ">
+          <HorizontalBookCard v-for="(book ,index) in books" :key="index" :book="book"/>
+        </div>
       </div>
     </div>
   </div>

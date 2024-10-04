@@ -24,8 +24,11 @@ import router from 'src/router';
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <!-- List Nav -->
         </ul>
-        <button class="btn btn-primary" @click="handleLogout">Logout</button>
-        <button class="btn btn-secondary" @click="gotoProfile">Profile </button>
+        <div class="d-flex gap-2">
+          <button class="btn btn-primary" @click="handleLogout">Logout</button>
+          <button class="btn btn-secondary" @click="gotoProfile">Profile </button>
+          <button class="btn btn-warning" @click="gotoProfile">Cart </button>
+        </div>
       </div>
     </div>
   </nav>
