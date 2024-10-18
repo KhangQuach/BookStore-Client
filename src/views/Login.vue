@@ -20,7 +20,7 @@
     localStorage.setItem('token', response.data.token)
     if(response.data.success === true){
       toast.success('Logged in successfully',{
-        "position": "bottom-right"
+        "position": "bottom-left"
       });
       localStorage.setItem('id', response.data.id)
       setTimeout(() =>{
@@ -29,7 +29,7 @@
     }
     else{
       toast.error('Invalid username or password',{
-        "position": "bottom-right"
+        "position": "bottom-left"
       });
     }
   }

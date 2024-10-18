@@ -84,7 +84,7 @@ import { toast } from 'vue3-toastify';
           </div>
           <div class="row">
             <label for="email" class="form-label">Email:</label>
-            <input type="text" class="form-control" id="email" v-model="email">
+            <input type="text" class="form-control" id="email" disabled v-model="email">
           </div>
           <div class="row">
             <label for="phone" class="form-label">Phone:</label>

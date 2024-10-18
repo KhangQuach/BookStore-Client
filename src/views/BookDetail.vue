@@ -1,9 +1,11 @@
 <script setup>
+import { handleStringDate } from '@utils/handleDate';
 import axios from 'axios';
 import { onMounted, ref } from 'vue';
 import { useRoute } from 'vue-router';
   const route = useRoute()
   const data = ref({})
+
   onMounted( async ()=>{
     const _id = route.params.id
     try{
@@ -15,6 +17,11 @@ import { useRoute } from 'vue-router';
       console.error(e)
     }
   })
+  const handleSubmit = () =>{
+    const userId = localStorage.getItem("id")
+    const bookId = route.params.id
+    console.log(userId, bookId)
+  }
 </script>
 
 <template>
@@ -32,7 +39,7 @@ import { useRoute } from 'vue-router';
         <img class="img-fluid" src="../assets/book2.jpg" alt="">
       </div>
       <div class="col rounded-2">
-        <form class="m-5 d-flex flex-column gap-2">
+        <form class="m-5 d-flex flex-column gap-2" @submit.prevent="handleSubmit">
           <h1>{{ data?.name }}</h1>
           <div class="d-flex align-items-center gap-5">
             <h2>{{data?.price}}$</h2>
@@ -58,7 +65,7 @@ import { useRoute } from 'vue-router';
             <div class="card w-25">
               <div class="card-body">
                 <h6 class="card-subtitle text-body-secondary">Publish Date</h6>
-                <p class="card-text ">{{data?.publishDate}}</p>
+                <p class="card-text ">{{handleStringDate(data?.publishDate)}}</p>
               </div>
             </div>
             <div class="card w-25">
