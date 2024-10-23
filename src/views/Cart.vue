@@ -1,8 +1,22 @@
 <script setup>
-  import { ref } from 'vue';
+import { onMounted, ref } from 'vue';
 import NavBar from '../components/NavBar.vue'
+import axios from 'axios';
+  const borrowList = ref([])
   const listCart = ref()
   const totalPrice = ref(0)
+  onMounted(async () => {
+    try{
+      const userId = localStorage.getItem("id")
+      console.log(userId)
+      const response = await axios.get(`/borrow/${userId}`)
+
+      borrowList.value = response.data
+      console.log(borrowList.value)
+    }catch(e){
+      console.error(e)
+    }
+  })
 </script>
 
 <template>
@@ -18,20 +32,20 @@ import NavBar from '../components/NavBar.vue'
         <!-- LIST CARD -->
         <div class="d-flex flex-column gap-2 h-100 overflow-auto " style="min-height:700px; max-height: 700px;">
           <!-- CARD -->
-          <div class="card w-100 d-flex flex-row justify-content-between p-1" style="height: 140px;">
+          <div class="card w-100 d-flex flex-row justify-content-between p-1" style="height: 140px;" v-for="(borrowItem, index) in borrowList" :key="index">
             <div class="d-flex">
               <div class="h-100" style="max-width: 110px; min-width: 110px;">
                 <img src="../assets/book1.jpg" alt="" class="img-thumbnail object-fit-cover h-100 w-100" >
               </div>
               <div class="ml-4 mt-2">
-                <h4>Product Name</h4>
-                <h5>author</h5>
-                <span>Price: 5$</span>
+                <h4>{{borrowItem.bookId.name}}</h4>
+                <h5>{{borrowItem.bookId.author}}</h5>
+                <span>Price: {{borrowItem.bookId.price}}</span>
               </div>
             </div>
             <div class="m-3 d-flex gap-2 text-white">
               <button type="button" class="btn btn-danger" style="height: 40px;"><i class="bi bi-trash3"></i></button>
-              <button type="button" class="btn btn-secondary" style="height: 40px;" ><i class="bi bi-hourglass-split"></i> Pending...</button>
+              <button type="button" class="btn btn-secondary" style="height: 40px; width: 120px;" ><i class="bi bi-hourglass-split"></i> Pending...</button>
             </div>
           </div>
         </div>
