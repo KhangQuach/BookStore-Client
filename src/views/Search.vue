@@ -50,7 +50,7 @@ onMounted(async () => {
           <h1>Search your book here!</h1>
           <form class="input-group mb-3" @submit.prevent="handleSearch">
             <input type="text" class="form-control fs-4 " aria-label="Recipient's username" aria-describedby="button-search" v-model="searchInput">
-            <button class="btn btn-outline-secondary" type="submit" id="button-search">Search</button>
+            <button class="btn btn-outline-secondary " type="submit" id="button-search">Search</button>
           </form>
         </div>
       </div>

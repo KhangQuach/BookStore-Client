@@ -10,10 +10,10 @@ import router from "src/router"
 </script>
 
 <template>
-  <div class="card" style="width: 48%; min-height: 150px; cursor: pointer;" @click="gotoDetail">
+  <div class="card" style="width: 48%; min-height: 150px; max-height: fit-content; cursor: pointer;" @click="gotoDetail">
     <div class="row g-0">
       <div class="col-md-3 ">
-        <img src="../assets/book2.jpg" class="img-fluid " alt="...">
+        <img src="../assets/book2.jpg" class="img-fluid" alt="...">
       </div>
       <div class="col-md-8">
         <div class="card-body ml-5">

@@ -19,7 +19,7 @@ import router from 'src/router';
 <template>
   <nav class="navbar navbar-expand-lg bg-body-tertiary shadow-sm fixed-top">
     <div class="container-fluid">
-      <a class="navbar-brand" href="/home">BOOK CORNER</a>
+      <a class="navbar-brand fw-semibold text-warning" href="/home">BOOK CORNER</a>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item">
