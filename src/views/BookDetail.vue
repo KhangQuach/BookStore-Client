@@ -12,12 +12,18 @@ import { toast } from 'vue3-toastify';
     bookId: route.params.id,
     part:'',
     type:'',
-    returnDate: ''
+    returnDate: '',
+    username:'',
+    bookname:''
   })
   onMounted( async ()=>{
     const _id = route.params.id
     try{
       const result = await axios.get(`/book/${_id}`)
+      const user = await axios.get(`/user/${localStorage.getItem("id")}`)
+      console.log(result)
+      dataCreateBorrow.value.username = user.data.username
+      dataCreateBorrow.value.bookname = result.data.data.name
       data.value = result.data.data
       console.log(data.value)
     }
