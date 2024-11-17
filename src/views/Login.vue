@@ -10,7 +10,7 @@
   const password = ref("")
   const isRemember = ref(false)
   const handleLogin = async () => {
-    console.log("loging...")
+    console.log("logging...")
     const data = {
       username: username.value,
       password: password.value

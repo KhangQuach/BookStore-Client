@@ -4,6 +4,7 @@ import axios from 'axios'
 import NavBar from '../components/NavBar.vue'
 import router from 'src/router'
 import Row from '@components/Row.vue'
+import FooterHome from '@components/FooterHome.vue'
 
 const searchInput = ref("")
 const handleSearch = () => {
@@ -37,7 +38,7 @@ categoryEndpoints.forEach(category => {
       <Row v-for="(categories,index) in categoryEndpoints" :key="index" :category="categories"/>
     </div>
   </div>
-  
+  <FooterHome/>
 </template>
 
 <style scoped>
