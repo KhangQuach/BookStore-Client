@@ -14,7 +14,7 @@
         <div class="col border-start border-end">
           <div class="ml-5 pt-5 px-5">
             <p style="font-weight: bold;font-size: 19px;">Keep Connected</p>
-            <p><i class="bi bi-facebook m-2" style="font-size: 22px; color: #0866ff;"></i>Like us on Facebook</p>
+            <p><i class="bi bi-facebook m-2" style="font-size: 22px; color: #0866ff;"></i><a href="https://www.facebook.com/thieukhang.0405/">Like us on Facebook</a></p>
             <p><i class="bi bi-twitter m-2" style="font-size: 22px; color: #0866ff;"></i>Follow us on Twitter</p>
             <p><i class="bi bi-google m-2" style="font-size: 22px; color: #dd4d3f;"></i>Add us on Google Plus</p>
             <p><i class="bi bi-pinterest m-2" style="font-size: 22px; color: #e7001e;"></i>Follow us on Pinterest</p>

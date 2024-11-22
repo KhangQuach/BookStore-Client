@@ -64,9 +64,9 @@ import { toast } from 'vue3-toastify';
   <div class="container-sm" style="margin-top: 70px;">
     <nav class="my-3" aria-label="breadcrumb">
       <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="#">Home</a></li>
-        <li class="breadcrumb-item"><a href="#">Library</a></li>
-        <li class="breadcrumb-item active" aria-current="page">Data</li>
+        <li class="breadcrumb-item"><a href="/home">Home</a></li>
+        <li class="breadcrumb-item"><a href="#">Detail</a></li>
+        <li class="breadcrumb-item active" aria-current="page">{{ data?.name }}</li>
       </ol>
     </nav>
     <div class="row shadow p-3 rounded-2" style="height: fit-content;">
@@ -97,7 +97,7 @@ import { toast } from 'vue3-toastify';
             <div class="input-group mb-3">
               <input type="date" class="form-control" id="dateInput" placeholder="Select a date" required v-model="dataCreateBorrow.returnDate">
             </div>
-            <button class="btn btn-primary w-100">Add to cart</button>
+            <button class="btn btn-warning w-100">Add to cart</button>
           </div>
           <div class="d-flex gap-2 text-center">
             <div class="card w-25">

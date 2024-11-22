@@ -9,7 +9,11 @@ import Cart from 'src/views/Cart.vue'
 import About from 'src/views/About.vue'
 import Books from 'src/views/Books.vue'
 const routes = [
-  {path:"/",component:Login},
+  {
+    path: '/:catchAll(.*)',
+    component: () => import('../views/404.vue')
+  },
+  {path:"/", component:Login},
   {path:"/home", component: Home},
   {path:"/login", component: Login},
   {path:"/signup", component: SignUp},

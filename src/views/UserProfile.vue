@@ -1,4 +1,5 @@
 <script setup>
+import FooterHome from '@components/FooterHome.vue';
 import NavBar from '@components/NavBar.vue';
 import axios from 'axios';
 import { onMounted, ref } from 'vue';
@@ -141,6 +142,7 @@ import { toast } from 'vue3-toastify';
       </div>
     </div>
   </div>
+  <FooterHome/>
 </template>
 
 <style scoped>

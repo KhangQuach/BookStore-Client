@@ -8,7 +8,7 @@ import NavBar from '@components/NavBar.vue';
 <template>
   <NavBar/>
   <div class="container">
-    <div class="row " style="margin-bottom: 100px;margin-top: 180px;">
+    <div class="row " style="margin-bottom: 170px;margin-top: 180px;">
       <div class="col shadow" style="position: relative;">
         <img width="100%" height="500px" style="object-fit: cover;" src="../assets/bookstore-slide-2MCD-superJumbo.jpg" alt="">
       </div>

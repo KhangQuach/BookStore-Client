@@ -1,8 +1,9 @@
 <script setup>
 import axios from 'axios';
 import router from 'src/router';
-
-
+import { computed } from 'vue';
+import { useRoute } from 'vue-router';
+  const route = useRoute()
   const handleLogout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("username");
@@ -14,6 +15,8 @@ import router from 'src/router';
   const gotoCart = () => {
     router.push('/home/cart')
   }
+  const isActiveCart = computed(() => route.path.includes('home/cart'));
+  const isActiveProfile = computed(() => route.path.includes('home/user/profile'));
 </script>
 
 <template>
@@ -61,9 +64,9 @@ import router from 'src/router';
           <!-- List Nav -->
         </ul>
         <div class="d-flex gap-2">
-          <button class="btn btn-primary px-5" @click="handleLogout"><i class="bi bi-box-arrow-left"></i></button>
-          <button class="btn btn-warning px-5" @click="gotoCart"><i class="bi bi-cart"></i> </button>
-          <button class="btn btn-secondary px-5" @click="gotoProfile"><i class="bi bi-person-circle"></i> </button>
+          <button class="btn btn-danger  px-5" @click="handleLogout"  ><i class="bi bi-box-arrow-left" ></i></button>
+          <button class="btn px-5" @click="gotoCart" :class="{'btn-secondary': !isActiveCart, 'btn-warning': isActiveCart}"><i class="bi bi-cart"></i> </button>
+          <button class="btn px-5" @click="gotoProfile" :class="{'btn-secondary': !isActiveProfile, 'btn-warning': isActiveProfile}"><i class="bi bi-person-circle"></i> </button>
           
         </div>
       </div>

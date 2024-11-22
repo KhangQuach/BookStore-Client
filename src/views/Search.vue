@@ -4,6 +4,7 @@ import axios from 'axios';
 import NavBar from '../components/NavBar.vue'
 import HorizontalBookCard from '@components/HorizontalBookCard.vue';
 import { useRoute } from 'vue-router';
+import FooterHome from '@components/FooterHome.vue';
 
 const route = useRoute()
 const searchInput = ref("")
@@ -44,7 +45,7 @@ onMounted(async () => {
   <div class="pb-2" style="margin-top: 70px;">
     <div class="container">
       <!-- search Container -->
-      <div class=" shadow w-100 d-flex justify-content-center align-items-center mt-4" style="height: 400px" >
+      <div class=" shadow w-100 d-flex justify-content-center align-items-center mt-4" style="height: 400px; background-color: #fff"  >
         <!-- <img class="d-block cover w-100 h-100" src="../assets/book2.jpg" alt=""> -->
         <div class="text-center px-5" style="width: 750px;"> 
           <h1>Search your book here!</h1>
@@ -63,7 +64,7 @@ onMounted(async () => {
       </div>
     </div>
   </div>
-  
+  <FooterHome/>
 </template>
 
 <style scoped>

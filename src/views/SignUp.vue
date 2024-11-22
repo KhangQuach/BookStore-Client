@@ -91,7 +91,7 @@ import { toast } from "vue3-toastify"
               </div>
             </form>
             <div class="d-flex justify-content-around w-100">
-              <div><router-link to="/login">Register now</router-link></div>
+              <div><router-link to="/login">Login now</router-link></div>
               <div><a href="">Forgot password ?</a></div>
             </div>
             <OauthButtonGroup/>

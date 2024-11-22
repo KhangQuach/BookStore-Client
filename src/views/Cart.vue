@@ -3,6 +3,7 @@ import { onMounted, reactive, ref } from 'vue';
 import NavBar from '../components/NavBar.vue'
 import axios from 'axios';
 import { handleStringDate } from '../utils/handleDate.js'
+import FooterHome from '@components/FooterHome.vue';
   const borrowList = ref([])
   const listCart = ref()
   const totalPrice = ref(0)
@@ -61,7 +62,7 @@ import { handleStringDate } from '../utils/handleDate.js'
       <!-- LEFT COLUMN -->
       <div class="col-lg-8 border-end ">
         <div class="d-flex align-items-center justify-content-between mb-1">
-          <h4 class="m-2">Your Book Cart</h4>
+          <h4 class="m-2">Your Book Queue</h4>
           <div class="d-flex gap-3">
             <span>{{ totalSummary.totalBorrows }} items</span>
             <button style="" class="px-3 rounded text-black py-1 border" @click="sortByStatus"><i class="bi bi-funnel mr-1"></i>Sort by status</button>
@@ -137,6 +138,7 @@ import { handleStringDate } from '../utils/handleDate.js'
       </div>
     </div>
   </div>
+  <FooterHome/>
 </template>
 
 <style scoped>
